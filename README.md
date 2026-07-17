@@ -1,2 +1,2 @@
 # poked
-App organizador de tareas de escritorio
+Aplicación de escritorio para organizar tareas. (Desarrollada en Python).
