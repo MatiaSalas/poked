@@ -24,6 +24,12 @@
             max-width: 400px;
             width: 100%;
         }
+        .logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
         h1 {
             font-size: 3rem;
             margin: 0 0 10px 0;
@@ -64,11 +70,12 @@
 <body>
 
     <div class="container">
-        <!-- Forzamos el texto para que ni el traductor lo rompa -->
+        <!-- Acá se muestra tu ícono -->
+        <img src="poked.png" alt="Poked Logo" class="logo" translate="no">
+        
         <h1 translate="no">Poked</h1>
         <p>Aplicación organizadora de tareas de escritorio</p>
         
-        <!-- Este botón descarga directamente tu archivo .pyw -->
         <a href="poked.pyw" download="poked.pyw" class="btn-download">Descargar App</a>
         
         <div class="version">Versión 2.5</div>
