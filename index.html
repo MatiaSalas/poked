@@ -41,8 +41,8 @@
             height: 75px;
             object-fit: contain;
             border-radius: 18px;
-            border: 2px solid #2ecc71;
-            box-shadow: 0 0 25px rgba(46, 204, 113, 0.45);
+            border: 2px solid #27ae60;
+            box-shadow: 0 0 25px rgba(39, 174, 96, 0.35);
             margin-bottom: 15px;
         }
         h1 {
@@ -61,7 +61,7 @@
             line-height: 1.5;
         }
 
-        /* El Diseño Fiel de Poked (Widget limpio) */
+        /* El Diseño Fiel de Poked */
         .poked-widget {
             width: 290px;
             background: #233040;
@@ -145,7 +145,7 @@
             font-weight: 500;
         }
 
-        /* Botón de Compra */
+        /* Botón de Compra con Verde Premium Equilibrado */
         .cta-section {
             display: flex;
             flex-direction: column;
@@ -153,23 +153,25 @@
             gap: 12px;
         }
         .btn-download {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); /* Verde esmeralda premium */
             color: white;
             text-decoration: none;
             padding: 15px 32px;
             font-size: 1.1rem;
             font-weight: 700;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.25);
+            box-shadow: 0 6px 18px rgba(39, 174, 96, 0.2);
             transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.05);
         }
         .btn-download:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(46, 204, 113, 0.4);
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            box-shadow: 0 10px 24px rgba(39, 174, 96, 0.35);
         }
         .price-tag {
             font-size: 0.9rem;
-            color: #2ecc71;
+            color: #27ae60;
             font-weight: 600;
         }
         .meta-info {
@@ -187,7 +189,7 @@
             <p class="subtitle">La herramienta de escritorio ultra-ligera y minimalista para gestionar tus tareas diarias directo en tu pantalla.</p>
         </div>
 
-        <!-- Réplica con Tareas Genéricas Protegidas -->
+        <!-- Réplica de Poked -->
         <div class="poked-widget">
             <div class="widget-header">
                 <div class="btn-plus">+</div>
