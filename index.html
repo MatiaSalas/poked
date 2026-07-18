@@ -3,83 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poked App</title>
+    <title translate="no">Poked — Organiza tu Escritorio</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1E272C;
-            color: #ECF0F1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .container {
-            text-align: center;
-            background-color: #2C3E50;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            max-width: 400px;
+
+        body {
+            background: radial-gradient(circle at top, #1e2640 0%, #0f111a 100%);
+            color: #f4f6fb;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .hero-container {
+            max-width: 900px;
             width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .logo {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-        h1 {
-            font-size: 3rem;
-            margin: 0 0 10px 0;
-            color: #ECF0F1;
-            letter-spacing: 1px;
-        }
-        p {
-            color: #95A5A6;
-            font-size: 1.1rem;
+
+        /* Encabezado */
+        .brand-section {
             margin-bottom: 30px;
         }
+        .logo-wrapper {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.3);
+            margin-bottom: 15px;
+        }
+        .logo-wrapper svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 550px;
+            line-height: 1.6;
+        }
+
+        /* Simulación Visual de la App (Product Mockup) */
+        .app-mockup {
+            width: 100%;
+            max-width: 680px;
+            background: #151b2d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            margin: 40px 0;
+            overflow: hidden;
+        }
+        .mockup-header {
+            background: #0d111c;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .mockup-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot.red { background: #ef4444; }
+        .dot.yellow { background: #f59e0b; }
+        .dot.green { background: #10b981; }
+        .mockup-title {
+            margin-left: 20px;
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        .mockup-body {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: left;
+            background: linear-gradient(180deg, #151b2d 0%, #0f1322 100%);
+        }
+        .mockup-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .panel-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2ecc71;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .mockup-item {
+            height: 32px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            border-left: 3px solid #3b82f6;
+        }
+        .mockup-item.done {
+            border-left-color: #10b981;
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+
+        /* Botón de Acción Comercial */
+        .cta-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
         .btn-download {
-            display: inline-block;
-            background-color: #2ECC71;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
             color: white;
             text-decoration: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: background-color 0.2s, transform 0.1s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 16px 36px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.25);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .btn-download:hover {
-            background-color: #27AE60;
             transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(46, 204, 113, 0.4);
+            background: linear-gradient(135deg, #34d399 0%, #2ecc71 100%);
         }
         .btn-download:active {
             transform: translateY(0);
         }
-        .version {
-            margin-top: 25px;
+        .price-tag {
+            font-size: 0.9rem;
+            color: #2ecc71;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .meta-info {
             font-size: 0.8rem;
-            color: #5D6D7E;
+            color: #64748b;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Nombre de imagen simplificado -->
-        <img src="logo.png" alt="Poked Logo" class="logo" translate="no">
-        
-        <h1 translate="no">Poked</h1>
-        <p>Aplicación organizadora de tareas de escritorio</p>
-        
-        <!-- Nombre de descarga simplificado -->
-        <a href="app.pyw" download="poked.pyw" class="btn-download">Descargar App</a>
-        
-        <div class="version">Versión 2.5</div>
+    <div class="hero-container">
+        <!-- Encabezado con Logo SVG integrado -->
+        <div class="brand-section">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
+            </div>
+            <h1 translate="no">Poked</h1>
+            <p class="subtitle">La herramienta de escritorio ultra-ligera diseñada para limpiar tu pantalla y potenciar tu enfoque diario en un solo clic.</p>
+        </div>
+
+        <!-- Simulación Interactiva Visual de la App -->
+        <div class="app-mockup">
+            <div class="mockup-header">
+                <div class="mockup-dots">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                <div class="mockup-title">Poked.exe — Workspace Inteligente</div>
+            </div>
+            <div class="mockup-body">
+                <div class="mockup-panel">
+                    <div class="panel-title">
+                        <span style="color: #3b82f6;">●</span> Prioridades del Día
+                    </div>
+                    <div class="mockup-item">🎯 Seguimiento de clientes Remax</div>
+                    <div class="mockup-item">📞 Llamadas de prospección nocturna</div>
+                    <div class="mockup-item">📩 Revisar nuevos contratos e ingresos</div>
+                </div>
+                <div class="mockup-panel">
+                    <div class="panel-title">
+                        <span style="color: #10b981;">●</span> Completado
+                    </div>
+                    <div class="mockup-item done">✨ Diseñar interfaz base de la app</div>
+                    <div class="mockup-item done">🚀 Lanzar el servidor en GitHub</div>
+                    <div class="mockup-item" style="border-left-color: #f59e0b;">⏳ Escalar operaciones globales ($1.99)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Comercial CTA -->
+        <div class="cta-section">
+            <!-- NOTA: Dejamos el enlace temporalmente vacío (#), en los siguientes pasos le pegamos tu link real de Gumroad -->
+            <a href="#" class="btn-download">Conseguir Poked por $1.99 USD</a>
+            <div class="price-tag">✓ Pago único de por vida. Descarga e instalación inmediata.</div>
+            <div class="meta-info">Compatible nativo con Windows 10 y 11 (64-bit)</div>
+        </div>
     </div>
 
 </body>
