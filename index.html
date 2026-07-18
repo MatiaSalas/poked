@@ -1,232 +1,264 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title translate="no">Poked — Organiza tu Escritorio</title>
+    <title>Poked — Tu Agenda de Escritorio</title>
+    <!-- Estilos en línea para mantenerlo ultra-ligero y minimalista -->
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background: radial-gradient(circle at top, #1e2640 0%, #0f111a 100%);
-            color: #f4f6fb;
-            min-height: 100vh;
+            background-color: #17212b;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .hero-container {
-            max-width: 600px;
-            width: 100%;
+            min-height: 100vh;
+            padding: 20px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        /* Encabezado con tu Logo Real */
-        .brand-section {
-            margin-bottom: 25px;
+        .container {
+            max-width: 500px;
+            width: 100%;
         }
-        .logo-img {
-            width: 75px;
-            height: 75px;
-            object-fit: contain;
+
+        /* Icono de la App */
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #0b1116;
+            border: 2px solid #3eb85d;
             border-radius: 18px;
-            border: 2px solid #27ae60;
-            box-shadow: 0 0 25px rgba(39, 174, 96, 0.35);
-            margin-bottom: 15px;
-        }
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            max-width: 480px;
-            line-height: 1.5;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(62, 184, 93, 0.2);
         }
 
-        /* El Diseño Fiel de Poked */
-        .poked-widget {
-            width: 290px;
-            background: #233040;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            margin: 35px 0;
-            display: flex;
-            flex-direction: column;
+        .icon-inner {
+            width: 35px;
+            height: 25px;
+            background: #24303c;
+            border-radius: 6px;
+            position: relative;
+            border: 1px solid #4f5d6c;
         }
+
+        .icon-inner::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 6px;
+            height: 6px;
+            background: #3eb85d;
+            border-radius: 50%;
+        }
+
+        .icon-inner::after {
+            content: '★';
+            position: absolute;
+            top: 2px;
+            right: 4px;
+            color: #f1c40f;
+            font-size: 10px;
+        }
+
+        /* Textos principales */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            color: #8fa0b0;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-bottom: 35px;
+            padding: 0 10px;
+        }
+
+        /* Mockup del Widget de Tareas */
+        .widget-preview {
+            background-color: #202b36;
+            border: 1px solid #2b3946;
+            border-radius: 4px;
+            width: 260px;
+            margin: 0 auto 35px auto;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: left;
+        }
+
         .widget-header {
-            background: #1c2633;
-            height: 35px;
+            background-color: #1a242d;
+            padding: 8px;
             display: flex;
             justify-content: flex-end;
-            align-items: center;
-            padding: 0 5px;
         }
-        .btn-plus {
-            background: #3498db;
+
+        .add-btn {
+            background-color: #3498db;
             color: white;
             border: none;
-            width: 25px;
-            height: 25px;
-            font-size: 14px;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: default;
+            cursor: pointer;
+            border-radius: 2px;
         }
-        .widget-list {
-            display: flex;
-            flex-direction: column;
+
+        .task-list {
+            list-style: none;
         }
-        .widget-item {
-            background: #2c3e50;
-            height: 32px;
-            margin-bottom: 2px;
+
+        .task-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid #2b3946;
+            font-size: 0.85rem;
+            color: #bdc3c7;
             display: flex;
-            align-items: center;
-            padding: 0 10px;
             justify-content: space-between;
-            font-size: 12px;
-            color: #ecf0f1;
-        }
-        .item-left {
-            display: flex;
             align-items: center;
-            gap: 8px;
         }
-        .dot-green {
-            width: 6px;
-            height: 6px;
-            background: #2ecc71;
-            border-radius: 50%;
+
+        .task-item::before {
+            content: '•';
+            color: #3eb85d;
+            margin-right: 8px;
+            font-size: 1.2rem;
+            line-height: 0;
         }
-        .star-icon {
-            color: #7f8c8d;
-            font-size: 12px;
+
+        .task-text {
+            flex-grow: 1;
         }
-        .star-icon.active {
+
+        .star {
+            color: #4f5d6c;
+            font-size: 0.9rem;
+        }
+
+        .star.active {
             color: #f1c40f;
         }
+
         .widget-footer {
-            background: #1c2633;
-            padding: 10px;
+            background-color: #1a242d;
+            padding: 8px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-        .version-text {
-            font-size: 10px;
+            font-size: 0.75rem;
             color: #7f8c8d;
         }
-        .btn-close-box {
-            background: #e74c3c;
+
+        .close-btn {
+            background-color: #e74c3c;
             color: white;
-            border: none;
-            padding: 4px 12px;
-            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 2px;
+            font-weight: bold;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        /* Botón de Compra definitivo */
+        .buy-button {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.15rem;
+            padding: 16px 32px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .buy-button:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .buy-button:active {
+            transform: translateY(0);
+        }
+
+        /* Características del pago */
+        .features {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #2ecc71;
             font-weight: 500;
         }
 
-        /* Botón de Compra con Verde Premium Equilibrado */
-        .cta-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-        .btn-download {
-            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); /* Verde esmeralda premium */
-            color: white;
-            text-decoration: none;
-            padding: 15px 32px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 12px;
-            box-shadow: 0 6px 18px rgba(39, 174, 96, 0.2);
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .btn-download:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            box-shadow: 0 10px 24px rgba(39, 174, 96, 0.35);
-        }
-        .price-tag {
-            font-size: 0.9rem;
-            color: #27ae60;
-            font-weight: 600;
-        }
-        .meta-info {
+        .compatibility {
+            margin-top: 8px;
             font-size: 0.8rem;
-            color: #64748b;
+            color: #7f8c8d;
         }
     </style>
 </head>
 <body>
 
-    <div class="hero-container">
-        <div class="brand-section">
-            <img src="logo.png" alt="Poked Logo" class="logo-img">
-            <h1 translate="no">Poked</h1>
-            <p class="subtitle">La herramienta de escritorio ultra-ligera y minimalista para gestionar tus tareas diarias directo en tu pantalla.</p>
+    <div class="container">
+        
+        <!-- Icono -->
+        <div class="app-icon">
+            <div class="icon-inner"></div>
         </div>
 
-        <!-- Réplica de Poked -->
-        <div class="poked-widget">
+        <!-- Títulos -->
+        <h1>Poked</h1>
+        <p class="tagline">La herramienta de escritorio ultra-ligera y minimalista para gestionar tus tareas diarias directo en tu pantalla.</p>
+
+        <!-- Preview Visual del Widget de Tareas -->
+        <div class="widget-preview">
             <div class="widget-header">
-                <div class="btn-plus">+</div>
+                <button class="add-btn">+</button>
             </div>
-            <div class="widget-list">
-                <div class="widget-item">
-                    <div class="item-left"><div class="dot-green"></div>revisar contrato comercial</div>
-                    <div class="star-icon active">★</div>
-                </div>
-                <div class="widget-item">
-                    <div class="item-left"><div class="dot-green"></div>enviar reporte mensual de metricas</div>
-                    <div class="star-icon">★</div>
-                </div>
-                <div class="widget-item">
-                    <div class="item-left"><div class="dot-green"></div>firmar autorizacion de proyecto</div>
-                    <div class="star-icon">★</div>
-                </div>
-                <div class="widget-item">
-                    <div class="item-left"><div class="dot-green"></div>responder correos pendientes</div>
-                    <div class="star-icon">★</div>
-                </div>
-                <div class="widget-item">
-                    <div class="item-left"><div class="dot-green"></div>conciliar facturacion de caja</div>
-                    <div class="star-icon">★</div>
-                </div>
-            </div>
+            <ul class="task-list">
+                <li class="task-item"><span class="task-text">revisar contrato comercial</span><span class="star active">★</span></li>
+                <li class="task-item"><span class="task-text">enviar reporte mensual de metricas</span><span class="star">★</span></li>
+                <li class="task-item"><span class="task-text">firmar autorizacion de proyecto</span><span class="star">★</span></li>
+                <li class="task-item"><span class="task-text">responder correos pendientes</span><span class="star">★</span></li>
+                <li class="task-item"><span class="task-text">conciliar facturacion de caja</span><span class="star">★</span></li>
+            </ul>
             <div class="widget-footer">
-                <span class="version-text">v2.5</span>
-                <button class="btn-close-box">Cierre de caja</button>
+                <span>v2.5</span>
+                <span class="close-btn">Cierre de caja</span>
             </div>
         </div>
 
-        <div class="cta-section">
-            <a href="#" class="btn-download">Conseguir Poked por $1.99 USD</a>
-            <div class="price-tag">✓ Pago único. Descarga inmediata.</div>
-            <div class="meta-info">Compatible nativo con Windows 10 y 11</div>
-        </div>
+        <!-- EL BOTÓN CON TU ENLACE DE LEMON SQUEEZY -->
+        <a href="https://poked.lemonsqueezy.com/checkout/buy/358b8a60-1498-442d-936b-0bbe2ed2a6cf" class="buy-button">
+            Conseguir Poked por $1.99 USD
+        </a>
+
+        <!-- Detalles finales -->
+        <p class="features">✓ Pago único. Descarga inmediata.</p>
+        <p class="compatibility">Compatible nativo con Windows 10 y 11</p>
+
     </div>
 
 </body>
