@@ -38,20 +38,21 @@
             margin-bottom: 30px;
         }
         .logo-wrapper {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
+            background: #151b2d;
+            width: 75px;
+            height: 75px;
+            border-radius: 20px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.3);
+            border: 3px solid #2ecc71; /* Reborde verde pedido */
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.4); /* Brillo verde */
             margin-bottom: 15px;
         }
         .logo-wrapper svg {
-            width: 35px;
-            height: 35px;
-            fill: white;
+            width: 38px;
+            height: 38px;
+            fill: #2ecc71;
         }
         h1 {
             font-size: 2.8rem;
@@ -69,7 +70,7 @@
             line-height: 1.6;
         }
 
-        /* Simulación Visual de la App (Product Mockup) */
+        /* Simulación Visual de la App */
         .app-mockup {
             width: 100%;
             max-width: 680px;
@@ -189,7 +190,7 @@
 <body>
 
     <div class="hero-container">
-        <!-- Encabezado con Logo SVG integrado -->
+        <!-- Encabezado con Logo Ajustado -->
         <div class="brand-section">
             <div class="logo-wrapper">
                 <svg viewBox="0 0 24 24">
@@ -200,7 +201,7 @@
             <p class="subtitle">La herramienta de escritorio ultra-ligera diseñada para limpiar tu pantalla y potenciar tu enfoque diario en un solo clic.</p>
         </div>
 
-        <!-- Simulación Interactiva Visual de la App -->
+        <!-- Simulación Visual Realista -->
         <div class="app-mockup">
             <div class="mockup-header">
                 <div class="mockup-dots">
@@ -213,26 +214,25 @@
             <div class="mockup-body">
                 <div class="mockup-panel">
                     <div class="panel-title">
-                        <span style="color: #3b82f6;">●</span> Prioridades del Día
+                        <span style="color: #3b82f6;">●</span> Pendientes urgentes
                     </div>
-                    <div class="mockup-item">🎯 Seguimiento de clientes Remax</div>
-                    <div class="mockup-item">📞 Llamadas de prospección nocturna</div>
-                    <div class="mockup-item">📩 Revisar nuevos contratos e ingresos</div>
+                    <div class="mockup-item">🎯 Revisar prioridades de la semana</div>
+                    <div class="mockup-item">📞 Organizar llamadas agendadas</div>
+                    <div class="mockup-item">📩 Responder correos importantes</div>
                 </div>
                 <div class="mockup-panel">
                     <div class="panel-title">
                         <span style="color: #10b981;">●</span> Completado
                     </div>
-                    <div class="mockup-item done">✨ Diseñar interfaz base de la app</div>
-                    <div class="mockup-item done">🚀 Lanzar el servidor en GitHub</div>
-                    <div class="mockup-item" style="border-left-color: #f59e0b;">⏳ Escalar operaciones globales ($1.99)</div>
+                    <div class="mockup-item done">✨ Planificar objetivos del día</div>
+                    <div class="mockup-item done">🚀 Limpiar archivos temporales</div>
+                    <div class="mockup-item" style="border-left-color: #f59e0b;">⏳ Mantener el foco al 100%</div>
                 </div>
             </div>
         </div>
 
         <!-- Sección Comercial CTA -->
         <div class="cta-section">
-            <!-- NOTA: Dejamos el enlace temporalmente vacío (#), en los siguientes pasos le pegamos tu link real de Gumroad -->
             <a href="#" class="btn-download">Conseguir Poked por $1.99 USD</a>
             <div class="price-tag">✓ Pago único de por vida. Descarga e instalación inmediata.</div>
             <div class="meta-info">Compatible nativo con Windows 10 y 11 (64-bit)</div>
